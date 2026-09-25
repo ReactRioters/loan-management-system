@@ -3,6 +3,8 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import Login from './pages/auth/Login'
 import AdminDashboard from './pages/admin/AdminDashboard'
 import CustomerDashboard from './pages/customer/CustomerDashboard'
+import Unauthorized from './pages/Unauthorized'
+import ProtectedRoute from './components/ProtectedRoute'
 
 function App() {
   return (
@@ -14,13 +16,23 @@ function App() {
 
         <Route
           path="/admin/dashboard"
-          element={<AdminDashboard />}
+          element={
+            <ProtectedRoute allowedRoles={['ROLE_ADMIN']}>
+              <AdminDashboard />
+            </ProtectedRoute>
+          }
         />
 
         <Route
           path="/customer/dashboard"
-          element={<CustomerDashboard />}
+          element={
+            <ProtectedRoute allowedRoles={['ROLE_CUSTOMER']}>
+              <CustomerDashboard />
+            </ProtectedRoute>
+          }
         />
+
+        <Route path="/unauthorized" element={<Unauthorized />} />
       </Routes>
     </BrowserRouter>
   )
