@@ -1,10 +1,12 @@
 import { useCallback, useEffect, useState } from "react";
 import { getLoanList } from "../../services/loanService";
+import { useNavigate } from "react-router-dom";
 
 function CustomerDashboard() {
   const [loans, setLoans] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
   const fetchLoans = useCallback(async () => {
     setLoading(true);
     setError(null);
@@ -35,6 +37,10 @@ function CustomerDashboard() {
   useEffect(() => {
     fetchLoans();
   }, [fetchLoans]);
+
+  const viewLoanDetails = (id) => {
+    navigate(`/customer/loans/${id}`);
+  }
   return (
     <div className="min-h-screen bg-slate-100 p-8">
       <h1 className="text-3xl font-bold text-slate-800">
@@ -93,7 +99,7 @@ function CustomerDashboard() {
                   <td className="py-2 px-4 border-b">{loan.tenure} years</td>
                   <td className="py-2 px-4 border-b">{loan.status}</td>
                   <td className="py-2 px-4 border-b">
-                    <button className="bg-blue-500 text-white py-1 px-3 rounded hover:bg-blue-600">
+                    <button onClick={() => viewLoanDetails(loan.id)} className="bg-blue-500 text-white py-1 px-3 rounded hover:bg-blue-600">
                       View Details
                     </button>
                   </td>
