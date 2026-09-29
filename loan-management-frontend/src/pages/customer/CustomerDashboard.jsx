@@ -47,9 +47,14 @@ function CustomerDashboard() {
         <h1 className="text-3xl font-bold text-slate-800">
           Customer Dashboard
         </h1>
-        <button onClick={() => navigate("/customer/loan")} className="bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600">
-          New Loan
-        </button>
+        <div>
+          <button onClick={() => navigate("/customer/loan")} className="bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600">
+            New Loan
+          </button>
+          <button onClick={() => navigate("/customer/profile")} className="ml-4 bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">
+            View Profile
+          </button>
+        </div>
       </div>
       <div className="mt-6">
         <h2 className="text-xl font-semibold text-slate-700">

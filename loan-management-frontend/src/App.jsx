@@ -7,6 +7,7 @@ import Unauthorized from './pages/Unauthorized'
 import ProtectedRoute from './components/ProtectedRoute'
 import LoanDetails from './pages/customer/LoanDetails'
 import ApplyLoan from './pages/customer/ApplyLoan'
+import CustomerProfile from './pages/customer/CustomerProfile'
 
 function App() {
   return (
@@ -43,6 +44,12 @@ function App() {
         <Route path="/customer/loan" element={
           <ProtectedRoute allowedRoles={['ROLE_CUSTOMER']}>
             <ApplyLoan />
+          </ProtectedRoute>
+        } />
+
+        <Route path="/customer/profile" element={
+          <ProtectedRoute allowedRoles={['ROLE_CUSTOMER']}>
+            <CustomerProfile />
           </ProtectedRoute>
         } />
 
