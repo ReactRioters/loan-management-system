@@ -6,6 +6,7 @@ import CustomerDashboard from './pages/customer/CustomerDashboard'
 import Unauthorized from './pages/Unauthorized'
 import ProtectedRoute from './components/ProtectedRoute'
 import LoanDetails from './pages/customer/LoanDetails'
+import ApplyLoan from './pages/customer/ApplyLoan'
 
 function App() {
   return (
@@ -36,6 +37,12 @@ function App() {
         <Route path="/customer/loans/:id" element={
           <ProtectedRoute allowedRoles={['ROLE_CUSTOMER']}>
             <LoanDetails />
+          </ProtectedRoute>
+        } />
+
+        <Route path="/customer/loan" element={
+          <ProtectedRoute allowedRoles={['ROLE_CUSTOMER']}>
+            <ApplyLoan />
           </ProtectedRoute>
         } />
 

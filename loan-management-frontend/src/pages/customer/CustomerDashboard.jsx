@@ -43,9 +43,14 @@ function CustomerDashboard() {
   }
   return (
     <div className="min-h-screen bg-slate-100 p-8">
-      <h1 className="text-3xl font-bold text-slate-800">
-        Customer Dashboard
-      </h1>
+      <div className="flex justify-between items-center">
+        <h1 className="text-3xl font-bold text-slate-800">
+          Customer Dashboard
+        </h1>
+        <button onClick={() => navigate("/customer/loan")} className="bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600">
+          New Loan
+        </button>
+      </div>
       <div className="mt-6">
         <h2 className="text-xl font-semibold text-slate-700">
           Your Loans
